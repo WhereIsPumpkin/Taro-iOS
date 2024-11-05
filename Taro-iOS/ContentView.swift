@@ -10,15 +10,11 @@ import SwiftUI
 struct ContentView: View {
     
     @State var isLeftSegmentSelected = true
-    @State var email = ""
-    @State var password = ""
-    
-    @State var errorText: String? = "Not allowed"
     
     var body: some View {
             VStack {
+                
                 header
-                    
                 
                 Spacer(minLength: 36)
                 
@@ -31,14 +27,10 @@ struct ContentView: View {
     
     private var header: some View {
         VStack(spacing: 24) {
+            
             Image(.logoIcon)
-                .onTapGesture {
-                    errorText = nil
-                }
+
             titleSection
-                .onTapGesture {
-                    errorText = "Email is unavailable"
-                }
         }
     }
     
@@ -64,34 +56,21 @@ struct ContentView: View {
     }
     
     private var authenticationSection: some View {
-        VStack(spacing: 36) {
-            authenticationTypeSegment
-         
-            if isLeftSegmentSelected {
-                VStack(spacing: 12) {
-                    
-                    PrimaryTextField("Email", text: $email)
-                    
-                    PrimaryTextField("Password", text: $password)
+        ScrollView {
+            VStack(spacing: 36) {
+                
+                authenticationTypeSegment
+             
+                if isLeftSegmentSelected {
+                    LoginView()
+                } else {
+                    RegisterView()
                 }
-            } else {
-                VStack(spacing: 12) {
-                    
-                    PrimaryTextField("Email", text: $email)
-                    
-                    PrimaryTextField("Username", text: $email)
-                    
-                    PrimaryTextField("Password", text: $password)
-                }
+                
+                Spacer()
             }
-            
-            Spacer()
+           
         }
-        .padding(24)
-        .background(.colorHex272623)
-        .clipShape(.rect(cornerRadii: .init(topLeading: 20, topTrailing: 20)))
-        .overlay(stroke)
-        .ignoresSafeArea()
     }
     
     private var stroke: some View {
@@ -104,33 +83,8 @@ struct ContentView: View {
                          leftSegmentTitle: "Login",
                          rightSegmentTitle: "Register")
     }
-    
-    private var selectedComponenet: some View {
-        VStack {
-            Text("Login")
-                .foregroundStyle(.white)
-                .font(.roboto(size: 16, .medium))
-        }
-        .frame(maxHeight: .infinity)
-        .frame(width: (UIScreen.main.bounds.width - 48) / 2)
-        .background(.accent)
-        .clipShape(.capsule)
-    }
 }
 
 #Preview {
     ContentView()
-}
-
-
-extension EnvironmentValues {
-    @Entry var errorText: String? = nil
-}
-
-extension View {
-    /// A modifier to show error text below a view if the error message is non-nil.
-    func showError(if errorText: String?) -> some View {
-        self
-            .environment(\.errorText, errorText)
-    }
 }

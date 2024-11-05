@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PrimaryTextField: View {
+struct PrimaryTextField: View, Errorable {
     
     // MARK: - Properties
     let placeholder: String
@@ -80,8 +80,22 @@ struct PrimaryTextField: View {
 @available(iOS 17.0, *)
 #Preview {
     @Previewable @State var text = ""
-    
-    PrimaryTextField("Email", text: $text)
-        .padding()
-        .showError(if: "Email Is Not Valid")
+    @Previewable @State var errorText: String? = nil
+   
+    VStack(alignment: .center, spacing: 16) {
+        PrimaryTextField("Email", text: $text)
+            .showError(if: errorText)
+            .padding(16)
+        
+        Button("Show Error") {
+            errorText = "Invalid email"
+        }
+        .accentColor(.red)
+        
+        Button("Hide Error") {
+            errorText = nil
+        }
+        .accentColor(.gray)
+    }
+    .backgroundColor(.background)
 }

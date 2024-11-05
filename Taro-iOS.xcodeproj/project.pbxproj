@@ -20,6 +20,9 @@
 		75A02D832CDA90C80033D464 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75A02D6E2CDA90C80033D464 /* Roboto-Regular.ttf */; };
 		75A02D842CDA90C80033D464 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A02D702CDA90C80033D464 /* Preview Assets.xcassets */; };
 		75A02D852CDA90C80033D464 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A02D722CDA90C80033D464 /* Assets.xcassets */; };
+		75A02D8B2CDAA2620033D464 /* View+ShowError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A02D8A2CDAA25E0033D464 /* View+ShowError.swift */; };
+		75A02D8D2CDAA6500033D464 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A02D8C2CDAA6500033D464 /* LoginView.swift */; };
+		75A02D8F2CDAA6A30033D464 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A02D8E2CDAA6A30033D464 /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		75A02D752CDA90C80033D464 /* PrimaryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
 		75A02D762CDA90C80033D464 /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		75A02D772CDA90C80033D464 /* Taro_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taro_iOSApp.swift; sourceTree = "<group>"; };
+		75A02D8A2CDAA25E0033D464 /* View+ShowError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ShowError.swift"; sourceTree = "<group>"; };
+		75A02D8C2CDAA6500033D464 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		75A02D8E2CDAA6A30033D464 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,7 @@
 				75A02D672CDA90C80033D464 /* Font+Roboto.swift */,
 				75A02D682CDA90C80033D464 /* LocalizedStringKey+Empty.swift */,
 				75A02D692CDA90C80033D464 /* View+BackgroundColor.swift */,
+				75A02D8A2CDAA25E0033D464 /* View+ShowError.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -101,6 +108,8 @@
 			children = (
 				75A02D892CDAA1180033D464 /* App */,
 				75A02D732CDA90C80033D464 /* ContentView.swift */,
+				75A02D8C2CDAA6500033D464 /* LoginView.swift */,
+				75A02D8E2CDAA6A30033D464 /* RegisterView.swift */,
 				75A02D872CDA90D50033D464 /* Componenets */,
 				75A02D882CDAA1020033D464 /* Support */,
 				75A02D712CDA90C80033D464 /* Preview Content */,
@@ -213,12 +222,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75A02D8B2CDAA2620033D464 /* View+ShowError.swift in Sources */,
+				75A02D8F2CDAA6A30033D464 /* RegisterView.swift in Sources */,
 				75A02D792CDA90C80033D464 /* Font+Roboto.swift in Sources */,
 				75A02D7A2CDA90C80033D464 /* LocalizedStringKey+Empty.swift in Sources */,
 				75A02D7B2CDA90C80033D464 /* View+BackgroundColor.swift in Sources */,
 				75A02D7C2CDA90C80033D464 /* ContentView.swift in Sources */,
 				75A02D7D2CDA90C80033D464 /* PrimaryTextField.swift in Sources */,
 				75A02D7E2CDA90C80033D464 /* SegmentedControl.swift in Sources */,
+				75A02D8D2CDAA6500033D464 /* LoginView.swift in Sources */,
 				75A02D7F2CDA90C80033D464 /* Taro_iOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
