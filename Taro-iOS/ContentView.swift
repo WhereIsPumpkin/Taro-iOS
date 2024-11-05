@@ -9,13 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var isRegisterSelected = false
+    @State var isLeftSegmentSelected = true
     @State var email = ""
     @State var password = ""
+    
+    @State var errorText: String? = "Not allowed"
     
     var body: some View {
             VStack {
                 header
+                    
                 
                 Spacer(minLength: 36)
                 
@@ -23,13 +26,19 @@ struct ContentView: View {
             }
             .padding(.top, 104)
             .backgroundColor(.background)
-            .animation(.default, value: isRegisterSelected)
+            .animation(.default, value: isLeftSegmentSelected)
     }
     
     private var header: some View {
         VStack(spacing: 24) {
             Image(.logoIcon)
+                .onTapGesture {
+                    errorText = nil
+                }
             titleSection
+                .onTapGesture {
+                    errorText = "Email is unavailable"
+                }
         }
     }
     
@@ -58,21 +67,21 @@ struct ContentView: View {
         VStack(spacing: 36) {
             authenticationTypeSegment
          
-            if !isRegisterSelected {
-                VStack(spacing: 24) {
+            if isLeftSegmentSelected {
+                VStack(spacing: 12) {
                     
-                    PrimaryTextField(text: $email, placeholder: "Email")
+                    PrimaryTextField("Email", text: $email)
                     
-                    PrimaryTextField(text: $password, placeholder: "Password")
+                    PrimaryTextField("Password", text: $password)
                 }
             } else {
-                VStack(spacing: 24) {
+                VStack(spacing: 12) {
                     
-                    PrimaryTextField(text: $email, placeholder: "Email")
+                    PrimaryTextField("Email", text: $email)
                     
-                    PrimaryTextField(text: $email, placeholder: "Username")
+                    PrimaryTextField("Username", text: $email)
                     
-                    PrimaryTextField(text: $password, placeholder: "Password")
+                    PrimaryTextField("Password", text: $password)
                 }
             }
             
@@ -91,7 +100,9 @@ struct ContentView: View {
     }
     
     private var authenticationTypeSegment: some View {
-        SegmentControl(isComponentTapped: $isRegisterSelected)
+        SegmentedControl(isLeftSegmentSelected: $isLeftSegmentSelected,
+                         leftSegmentTitle: "Login",
+                         rightSegmentTitle: "Register")
     }
     
     private var selectedComponenet: some View {
@@ -109,4 +120,17 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+}
+
+
+extension EnvironmentValues {
+    @Entry var errorText: String? = nil
+}
+
+extension View {
+    /// A modifier to show error text below a view if the error message is non-nil.
+    func showError(if errorText: String?) -> some View {
+        self
+            .environment(\.errorText, errorText)
+    }
 }
