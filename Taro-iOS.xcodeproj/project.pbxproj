@@ -99,14 +99,12 @@
 		75A02D782CDA90C80033D464 /* Taro-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				75A02D872CDA90D50033D464 /* Componenets */,
-				75A02D6A2CDA90C80033D464 /* Extensions */,
-				75A02D6F2CDA90C80033D464 /* Font */,
-				75A02D712CDA90C80033D464 /* Preview Content */,
-				75A02D722CDA90C80033D464 /* Assets.xcassets */,
+				75A02D892CDAA1180033D464 /* App */,
 				75A02D732CDA90C80033D464 /* ContentView.swift */,
+				75A02D872CDA90D50033D464 /* Componenets */,
+				75A02D882CDAA1020033D464 /* Support */,
+				75A02D712CDA90C80033D464 /* Preview Content */,
 				75A02D742CDA90C80033D464 /* Info.plist */,
-				75A02D772CDA90C80033D464 /* Taro_iOSApp.swift */,
 			);
 			path = "Taro-iOS";
 			sourceTree = "<group>";
@@ -118,6 +116,24 @@
 				75A02D762CDA90C80033D464 /* SegmentedControl.swift */,
 			);
 			path = Componenets;
+			sourceTree = "<group>";
+		};
+		75A02D882CDAA1020033D464 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				75A02D6A2CDA90C80033D464 /* Extensions */,
+				75A02D6F2CDA90C80033D464 /* Font */,
+				75A02D722CDA90C80033D464 /* Assets.xcassets */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		75A02D892CDAA1180033D464 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				75A02D772CDA90C80033D464 /* Taro_iOSApp.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
