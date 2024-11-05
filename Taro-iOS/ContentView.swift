@@ -56,7 +56,7 @@ struct ContentView: View {
     }
     
     private var authenticationSection: some View {
-        ScrollView {
+
             VStack(spacing: 36) {
                 
                 authenticationTypeSegment
@@ -69,8 +69,11 @@ struct ContentView: View {
                 
                 Spacer()
             }
-           
-        }
+            .padding(24)
+            .background(.colorHex272623)
+            .clipShape(.rect(cornerRadii: .init(topLeading: 20, topTrailing: 20)))
+            .overlay(stroke)
+            .ignoresSafeArea()
     }
     
     private var stroke: some View {
