@@ -12,6 +12,7 @@ struct ContentView: View {
     @State var isLeftSegmentSelected = true
     @FocusState var isEmailFocused: Bool
     @FocusState var isUsernameFocused: Bool
+    @Binding var path: [Destinations]
     
     var body: some View {
         VStack {
@@ -25,7 +26,7 @@ struct ContentView: View {
             
             authenticationSection
         }
-        .padding(.top, isEmailFocused || isUsernameFocused ? 16 : 104)
+        .padding(.top, isEmailFocused || isUsernameFocused ? 32 : 104)
         .backgroundColor(.background, dismissKeyboardOnTap: true)
         .animation(.default, value: isLeftSegmentSelected)
         .animation(.easeInOut(duration: 0.1), value: isEmailFocused)
@@ -95,6 +96,12 @@ struct ContentView: View {
     }
 }
 
+@available(iOS 17, *)
 #Preview {
-    ContentView()
+    
+    @Previewable @State var path = [Destinations]()
+    
+    NavigationStack(path: $path) {
+        ContentView(path: $path)
+    }
 }
