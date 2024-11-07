@@ -10,26 +10,33 @@ import SwiftUI
 struct ContentView: View {
     
     @State var isLeftSegmentSelected = true
+    @FocusState var isEmailFocused: Bool
+    @FocusState var isUsernameFocused: Bool
     
     var body: some View {
-            VStack {
-                
+        VStack {
+            
+            if isEmailFocused || isUsernameFocused {
+                EmptyView()
+            } else {
                 header
-                
                 Spacer(minLength: 36)
-                
-                authenticationSection
             }
-            .padding(.top, 104)
-            .backgroundColor(.background)
-            .animation(.default, value: isLeftSegmentSelected)
+            
+            authenticationSection
+        }
+        .padding(.top, isEmailFocused || isUsernameFocused ? 16 : 104)
+        .backgroundColor(.background, dismissKeyboardOnTap: true)
+        .animation(.default, value: isLeftSegmentSelected)
+        .animation(.easeInOut(duration: 0.1), value: isEmailFocused)
+        .animation(.easeInOut(duration: 0.1), value: isUsernameFocused)
     }
     
     private var header: some View {
         VStack(spacing: 24) {
             
             Image(.logoIcon)
-
+            
             titleSection
         }
     }
@@ -56,24 +63,24 @@ struct ContentView: View {
     }
     
     private var authenticationSection: some View {
-
-            VStack(spacing: 36) {
-                
-                authenticationTypeSegment
-             
-                if isLeftSegmentSelected {
-                    LoginView()
-                } else {
-                    RegisterView()
-                }
-                
-                Spacer()
+        
+        VStack(spacing: 36) {
+            
+            authenticationTypeSegment
+            
+            if isLeftSegmentSelected {
+                LoginView(isEmailFocused: _isEmailFocused)
+            } else {
+                RegisterView(isUsernameFocused: _isUsernameFocused)
             }
-            .padding(24)
-            .background(.colorHex272623)
-            .clipShape(.rect(cornerRadii: .init(topLeading: 20, topTrailing: 20)))
-            .overlay(stroke)
-            .ignoresSafeArea()
+            
+            Spacer()
+        }
+        .padding(24)
+        .background(.colorHex272623)
+        .clipShape(.rect(cornerRadii: .init(topLeading: 20, topTrailing: 20)))
+        .overlay(stroke)
+        .ignoresSafeArea()
     }
     
     private var stroke: some View {

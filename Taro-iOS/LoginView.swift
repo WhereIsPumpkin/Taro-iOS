@@ -12,14 +12,17 @@ struct LoginView: View {
     
     @State var email = ""
     @State var password = ""
+    @FocusState var isEmailFocused: Bool
+    @FocusState var isPasswordFocused: Bool
     
     var body: some View {
         VStack(spacing: 12) {
             
             PrimaryTextField("Email", text: $email)
-                .keyboardType(.numberPad)
+                .focused($isEmailFocused)
             
             PrimaryTextField("Password", text: $password)
+                .focused($isPasswordFocused)
         }
     }
     

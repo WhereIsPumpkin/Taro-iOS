@@ -8,10 +8,16 @@
 import SwiftUI
 
 extension View {
-    func backgroundColor(_ color: Color) -> some View {
+    func backgroundColor(_ color: Color, dismissKeyboardOnTap: Bool = false) -> some View {
         ZStack {
-            color
-                .edgesIgnoringSafeArea(.all)
+            if dismissKeyboardOnTap {
+                color
+                    .edgesIgnoringSafeArea(.all)
+                    .dismissKeyboardOnTap()
+            } else {
+                color
+                    .edgesIgnoringSafeArea(.all)
+            }
             self
         }
     }

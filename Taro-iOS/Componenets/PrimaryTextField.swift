@@ -10,16 +10,17 @@ import SwiftUI
 struct PrimaryTextField: View, Errorable {
     
     // MARK: - Properties
-    let placeholder: String
+    let placeholder: LocalizedStringKey
     @Binding var text: String
     @FocusState private var isFocused: Bool
     @Environment(\.errorText) private var errorText: String?
     
     // MARK: - Initialization
-    init(_ placeholder: String, text: Binding<String>) {
+    init(_ placeholder: LocalizedStringKey, text: Binding<String>) {
         self.placeholder = placeholder
         self._text = text
     }
+    
     // MARK: - Body
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -86,16 +87,33 @@ struct PrimaryTextField: View, Errorable {
         PrimaryTextField("Email", text: $text)
             .showError(if: errorText)
             .padding(16)
-        
-        Button("Show Error") {
+
+        Button(action: {
             errorText = "Invalid email"
+        }) {
+            Text("Show Error")
+                .font(.headline)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.red.opacity(0.8))
+                .cornerRadius(12)
+                .foregroundColor(.white)
+                .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
         }
-        .accentColor(.red)
         
-        Button("Hide Error") {
+        Button(action: {
             errorText = nil
+        }) {
+            Text("Hide Error")
+                .font(.headline)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.green.opacity(0.8))
+                .cornerRadius(12)
+                .foregroundColor(.white)
+                .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
         }
-        .accentColor(.gray)
     }
+    .padding(24)
     .backgroundColor(.background)
 }
